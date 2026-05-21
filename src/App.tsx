@@ -253,7 +253,7 @@ function Footer() {
   return (
     <footer className="footer">
       <div className="container">
-        <p className="footer__brand">🪳 Bharatiya Cockroach Dal</p>
+        <p className="footer__brand">Bharatiya Cockroach</p>
         <p className="footer__tagline">Light on karo aur democracy khatam.</p>
         <p className="footer__note">An independent cockroach movement. Not affiliated with any other animal.</p>
       </div>

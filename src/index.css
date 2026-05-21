@@ -656,7 +656,7 @@ body::after {
 }
 
 .footer__tagline {
-  font-size: 14px;
+  font-size: 18px;
   color: var(--saffron);
   margin-bottom: 14px;
   font-style: italic;
