@@ -1,1 +1,0 @@
-# bharatiya-cockroach
