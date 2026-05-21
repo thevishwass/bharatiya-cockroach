@@ -2,20 +2,31 @@ import { useEffect, useRef, useState } from "react";
 import { DEMANDS } from "./demands.ts";
 import "./App.css";
 
+import type { Demand } from "./demands";
+
+
 function useFadeIn() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement | null>(null);
+
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
     const obs = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) { el.classList.add("visible"); obs.disconnect(); }
+        if (entry.isIntersecting) {
+          el.classList.add("visible");
+          obs.disconnect();
+        }
       },
       { threshold: 0.1 }
     );
+
     obs.observe(el);
+
     return () => obs.disconnect();
   }, []);
+
   return ref;
 }
 
@@ -135,8 +146,11 @@ function Hero() {
     </section>
   );
 }
-
-function DemandCard({ demand, index }) {
+type DemandCardProps = {
+  demand: Demand;
+  index: number;
+};
+function DemandCard({ demand, index }: DemandCardProps) {
   return (
     <article className="dcard">
       <span className="dcard__num">{"0" + (index + 1)}</span>
@@ -151,6 +165,7 @@ function DemandCard({ demand, index }) {
 
 function Demands() {
   const ref = useFadeIn();
+  
   return (
     <section id="demands" className="section section--surface">
       <div className="container fade-in" ref={ref}>
@@ -159,6 +174,7 @@ function Demands() {
           <h2 className="section-title">Our Demands</h2>
           <div className="section-title-line" />
         </header>
+        
         <div className="demands-grid">
           {DEMANDS.map((d, i) => (
             <DemandCard key={d.id} demand={d} index={i} />
